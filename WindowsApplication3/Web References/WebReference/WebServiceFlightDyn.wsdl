@@ -1,0 +1,969 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetFlightDyn">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="fDate" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="fType" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFlightDynResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="QueryFlightDyn">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="filter" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueryFlightDynResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetFlightViewDyn">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="fDate" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFlightViewDynResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetFlightSecurityData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="flightAID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFlightSecurityDataResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="UpdateSecurityDataTime">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="para" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="flightAID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateSecurityDataTimeResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="UpdateSecurityData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="para" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="value" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="flightAID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateSecurityDataResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SignChecked">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DepartmentID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SignCheckedResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="senderMessageBytopic">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="payload" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="title" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="description" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="topic" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="type" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="senderMessageBytopicResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pwd" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetPara">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetParaResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ResetPassword">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="un" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pw" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="resetpw" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ResetPasswordResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetCargo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="fDate" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="flightNum" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCargoResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetCargoTotal">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="date1" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="date2" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCargoTotalResponse">
+        <s:complexType />
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetFlightDynSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFlightDyn" />
+  </wsdl:message>
+  <wsdl:message name="GetFlightDynSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFlightDynResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueryFlightDynSoapIn">
+    <wsdl:part name="parameters" element="tns:QueryFlightDyn" />
+  </wsdl:message>
+  <wsdl:message name="QueryFlightDynSoapOut">
+    <wsdl:part name="parameters" element="tns:QueryFlightDynResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFlightViewDynSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFlightViewDyn" />
+  </wsdl:message>
+  <wsdl:message name="GetFlightViewDynSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFlightViewDynResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFlightSecurityDataSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFlightSecurityData" />
+  </wsdl:message>
+  <wsdl:message name="GetFlightSecurityDataSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFlightSecurityDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateSecurityDataTimeSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateSecurityDataTime" />
+  </wsdl:message>
+  <wsdl:message name="UpdateSecurityDataTimeSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateSecurityDataTimeResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateSecurityDataSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateSecurityData" />
+  </wsdl:message>
+  <wsdl:message name="UpdateSecurityDataSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateSecurityDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="SignCheckedSoapIn">
+    <wsdl:part name="parameters" element="tns:SignChecked" />
+  </wsdl:message>
+  <wsdl:message name="SignCheckedSoapOut">
+    <wsdl:part name="parameters" element="tns:SignCheckedResponse" />
+  </wsdl:message>
+  <wsdl:message name="senderMessageBytopicSoapIn">
+    <wsdl:part name="parameters" element="tns:senderMessageBytopic" />
+  </wsdl:message>
+  <wsdl:message name="senderMessageBytopicSoapOut">
+    <wsdl:part name="parameters" element="tns:senderMessageBytopicResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUser" />
+  </wsdl:message>
+  <wsdl:message name="GetUserSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetParaSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPara" />
+  </wsdl:message>
+  <wsdl:message name="GetParaSoapOut">
+    <wsdl:part name="parameters" element="tns:GetParaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ResetPasswordSoapIn">
+    <wsdl:part name="parameters" element="tns:ResetPassword" />
+  </wsdl:message>
+  <wsdl:message name="ResetPasswordSoapOut">
+    <wsdl:part name="parameters" element="tns:ResetPasswordResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCargoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCargo" />
+  </wsdl:message>
+  <wsdl:message name="GetCargoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCargoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCargoTotalSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCargoTotal" />
+  </wsdl:message>
+  <wsdl:message name="GetCargoTotalSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCargoTotalResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFlightDynHttpGetIn">
+    <wsdl:part name="fDate" type="s:string" />
+    <wsdl:part name="fType" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetFlightDynHttpGetOut" />
+  <wsdl:message name="QueryFlightDynHttpGetIn">
+    <wsdl:part name="filter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="QueryFlightDynHttpGetOut" />
+  <wsdl:message name="GetFlightViewDynHttpGetIn">
+    <wsdl:part name="fDate" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetFlightViewDynHttpGetOut" />
+  <wsdl:message name="GetFlightSecurityDataHttpGetIn">
+    <wsdl:part name="flightAID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetFlightSecurityDataHttpGetOut" />
+  <wsdl:message name="UpdateSecurityDataTimeHttpGetIn">
+    <wsdl:part name="AID" type="s:string" />
+    <wsdl:part name="para" type="s:string" />
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="flightAID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateSecurityDataTimeHttpGetOut" />
+  <wsdl:message name="UpdateSecurityDataHttpGetIn">
+    <wsdl:part name="AID" type="s:string" />
+    <wsdl:part name="para" type="s:string" />
+    <wsdl:part name="value" type="s:string" />
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="flightAID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateSecurityDataHttpGetOut" />
+  <wsdl:message name="SignCheckedHttpGetIn">
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="DepartmentID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SignCheckedHttpGetOut" />
+  <wsdl:message name="senderMessageBytopicHttpGetIn">
+    <wsdl:part name="payload" type="s:string" />
+    <wsdl:part name="title" type="s:string" />
+    <wsdl:part name="description" type="s:string" />
+    <wsdl:part name="topic" type="s:string" />
+    <wsdl:part name="type" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="senderMessageBytopicHttpGetOut" />
+  <wsdl:message name="GetUserHttpGetIn">
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetUserHttpGetOut" />
+  <wsdl:message name="GetParaHttpGetIn" />
+  <wsdl:message name="GetParaHttpGetOut" />
+  <wsdl:message name="ResetPasswordHttpGetIn">
+    <wsdl:part name="un" type="s:string" />
+    <wsdl:part name="pw" type="s:string" />
+    <wsdl:part name="resetpw" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ResetPasswordHttpGetOut" />
+  <wsdl:message name="GetCargoHttpGetIn">
+    <wsdl:part name="fDate" type="s:string" />
+    <wsdl:part name="flightNum" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetCargoHttpGetOut" />
+  <wsdl:message name="GetCargoTotalHttpGetIn">
+    <wsdl:part name="date1" type="s:string" />
+    <wsdl:part name="date2" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetCargoTotalHttpGetOut" />
+  <wsdl:message name="GetFlightDynHttpPostIn">
+    <wsdl:part name="fDate" type="s:string" />
+    <wsdl:part name="fType" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetFlightDynHttpPostOut" />
+  <wsdl:message name="QueryFlightDynHttpPostIn">
+    <wsdl:part name="filter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="QueryFlightDynHttpPostOut" />
+  <wsdl:message name="GetFlightViewDynHttpPostIn">
+    <wsdl:part name="fDate" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetFlightViewDynHttpPostOut" />
+  <wsdl:message name="GetFlightSecurityDataHttpPostIn">
+    <wsdl:part name="flightAID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetFlightSecurityDataHttpPostOut" />
+  <wsdl:message name="UpdateSecurityDataTimeHttpPostIn">
+    <wsdl:part name="AID" type="s:string" />
+    <wsdl:part name="para" type="s:string" />
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="flightAID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateSecurityDataTimeHttpPostOut" />
+  <wsdl:message name="UpdateSecurityDataHttpPostIn">
+    <wsdl:part name="AID" type="s:string" />
+    <wsdl:part name="para" type="s:string" />
+    <wsdl:part name="value" type="s:string" />
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="flightAID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateSecurityDataHttpPostOut" />
+  <wsdl:message name="SignCheckedHttpPostIn">
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="DepartmentID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SignCheckedHttpPostOut" />
+  <wsdl:message name="senderMessageBytopicHttpPostIn">
+    <wsdl:part name="payload" type="s:string" />
+    <wsdl:part name="title" type="s:string" />
+    <wsdl:part name="description" type="s:string" />
+    <wsdl:part name="topic" type="s:string" />
+    <wsdl:part name="type" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="senderMessageBytopicHttpPostOut" />
+  <wsdl:message name="GetUserHttpPostIn">
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetUserHttpPostOut" />
+  <wsdl:message name="GetParaHttpPostIn" />
+  <wsdl:message name="GetParaHttpPostOut" />
+  <wsdl:message name="ResetPasswordHttpPostIn">
+    <wsdl:part name="un" type="s:string" />
+    <wsdl:part name="pw" type="s:string" />
+    <wsdl:part name="resetpw" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ResetPasswordHttpPostOut" />
+  <wsdl:message name="GetCargoHttpPostIn">
+    <wsdl:part name="fDate" type="s:string" />
+    <wsdl:part name="flightNum" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetCargoHttpPostOut" />
+  <wsdl:message name="GetCargoTotalHttpPostIn">
+    <wsdl:part name="date1" type="s:string" />
+    <wsdl:part name="date2" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetCargoTotalHttpPostOut" />
+  <wsdl:portType name="WebServiceFlightDynSoap">
+    <wsdl:operation name="GetFlightDyn">
+      <wsdl:input message="tns:GetFlightDynSoapIn" />
+      <wsdl:output message="tns:GetFlightDynSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryFlightDyn">
+      <wsdl:input message="tns:QueryFlightDynSoapIn" />
+      <wsdl:output message="tns:QueryFlightDynSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightViewDyn">
+      <wsdl:input message="tns:GetFlightViewDynSoapIn" />
+      <wsdl:output message="tns:GetFlightViewDynSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightSecurityData">
+      <wsdl:input message="tns:GetFlightSecurityDataSoapIn" />
+      <wsdl:output message="tns:GetFlightSecurityDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSecurityDataTime">
+      <wsdl:input message="tns:UpdateSecurityDataTimeSoapIn" />
+      <wsdl:output message="tns:UpdateSecurityDataTimeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSecurityData">
+      <wsdl:input message="tns:UpdateSecurityDataSoapIn" />
+      <wsdl:output message="tns:UpdateSecurityDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SignChecked">
+      <wsdl:input message="tns:SignCheckedSoapIn" />
+      <wsdl:output message="tns:SignCheckedSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="senderMessageBytopic">
+      <wsdl:input message="tns:senderMessageBytopicSoapIn" />
+      <wsdl:output message="tns:senderMessageBytopicSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUser">
+      <wsdl:input message="tns:GetUserSoapIn" />
+      <wsdl:output message="tns:GetUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPara">
+      <wsdl:input message="tns:GetParaSoapIn" />
+      <wsdl:output message="tns:GetParaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ResetPassword">
+      <wsdl:input message="tns:ResetPasswordSoapIn" />
+      <wsdl:output message="tns:ResetPasswordSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCargo">
+      <wsdl:input message="tns:GetCargoSoapIn" />
+      <wsdl:output message="tns:GetCargoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCargoTotal">
+      <wsdl:input message="tns:GetCargoTotalSoapIn" />
+      <wsdl:output message="tns:GetCargoTotalSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="WebServiceFlightDynHttpGet">
+    <wsdl:operation name="GetFlightDyn">
+      <wsdl:input message="tns:GetFlightDynHttpGetIn" />
+      <wsdl:output message="tns:GetFlightDynHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryFlightDyn">
+      <wsdl:input message="tns:QueryFlightDynHttpGetIn" />
+      <wsdl:output message="tns:QueryFlightDynHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightViewDyn">
+      <wsdl:input message="tns:GetFlightViewDynHttpGetIn" />
+      <wsdl:output message="tns:GetFlightViewDynHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightSecurityData">
+      <wsdl:input message="tns:GetFlightSecurityDataHttpGetIn" />
+      <wsdl:output message="tns:GetFlightSecurityDataHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSecurityDataTime">
+      <wsdl:input message="tns:UpdateSecurityDataTimeHttpGetIn" />
+      <wsdl:output message="tns:UpdateSecurityDataTimeHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSecurityData">
+      <wsdl:input message="tns:UpdateSecurityDataHttpGetIn" />
+      <wsdl:output message="tns:UpdateSecurityDataHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SignChecked">
+      <wsdl:input message="tns:SignCheckedHttpGetIn" />
+      <wsdl:output message="tns:SignCheckedHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="senderMessageBytopic">
+      <wsdl:input message="tns:senderMessageBytopicHttpGetIn" />
+      <wsdl:output message="tns:senderMessageBytopicHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUser">
+      <wsdl:input message="tns:GetUserHttpGetIn" />
+      <wsdl:output message="tns:GetUserHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPara">
+      <wsdl:input message="tns:GetParaHttpGetIn" />
+      <wsdl:output message="tns:GetParaHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ResetPassword">
+      <wsdl:input message="tns:ResetPasswordHttpGetIn" />
+      <wsdl:output message="tns:ResetPasswordHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCargo">
+      <wsdl:input message="tns:GetCargoHttpGetIn" />
+      <wsdl:output message="tns:GetCargoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCargoTotal">
+      <wsdl:input message="tns:GetCargoTotalHttpGetIn" />
+      <wsdl:output message="tns:GetCargoTotalHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="WebServiceFlightDynHttpPost">
+    <wsdl:operation name="GetFlightDyn">
+      <wsdl:input message="tns:GetFlightDynHttpPostIn" />
+      <wsdl:output message="tns:GetFlightDynHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryFlightDyn">
+      <wsdl:input message="tns:QueryFlightDynHttpPostIn" />
+      <wsdl:output message="tns:QueryFlightDynHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightViewDyn">
+      <wsdl:input message="tns:GetFlightViewDynHttpPostIn" />
+      <wsdl:output message="tns:GetFlightViewDynHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightSecurityData">
+      <wsdl:input message="tns:GetFlightSecurityDataHttpPostIn" />
+      <wsdl:output message="tns:GetFlightSecurityDataHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSecurityDataTime">
+      <wsdl:input message="tns:UpdateSecurityDataTimeHttpPostIn" />
+      <wsdl:output message="tns:UpdateSecurityDataTimeHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSecurityData">
+      <wsdl:input message="tns:UpdateSecurityDataHttpPostIn" />
+      <wsdl:output message="tns:UpdateSecurityDataHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SignChecked">
+      <wsdl:input message="tns:SignCheckedHttpPostIn" />
+      <wsdl:output message="tns:SignCheckedHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="senderMessageBytopic">
+      <wsdl:input message="tns:senderMessageBytopicHttpPostIn" />
+      <wsdl:output message="tns:senderMessageBytopicHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUser">
+      <wsdl:input message="tns:GetUserHttpPostIn" />
+      <wsdl:output message="tns:GetUserHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPara">
+      <wsdl:input message="tns:GetParaHttpPostIn" />
+      <wsdl:output message="tns:GetParaHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ResetPassword">
+      <wsdl:input message="tns:ResetPasswordHttpPostIn" />
+      <wsdl:output message="tns:ResetPasswordHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCargo">
+      <wsdl:input message="tns:GetCargoHttpPostIn" />
+      <wsdl:output message="tns:GetCargoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCargoTotal">
+      <wsdl:input message="tns:GetCargoTotalHttpPostIn" />
+      <wsdl:output message="tns:GetCargoTotalHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WebServiceFlightDynSoap" type="tns:WebServiceFlightDynSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetFlightDyn">
+      <soap:operation soapAction="http://tempuri.org/GetFlightDyn" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryFlightDyn">
+      <soap:operation soapAction="http://tempuri.org/QueryFlightDyn" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightViewDyn">
+      <soap:operation soapAction="http://tempuri.org/GetFlightViewDyn" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightSecurityData">
+      <soap:operation soapAction="http://tempuri.org/GetFlightSecurityData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSecurityDataTime">
+      <soap:operation soapAction="http://tempuri.org/UpdateSecurityDataTime" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSecurityData">
+      <soap:operation soapAction="http://tempuri.org/UpdateSecurityData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SignChecked">
+      <soap:operation soapAction="http://tempuri.org/SignChecked" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="senderMessageBytopic">
+      <soap:operation soapAction="http://tempuri.org/senderMessageBytopic" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUser">
+      <soap:operation soapAction="http://tempuri.org/GetUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPara">
+      <soap:operation soapAction="http://tempuri.org/GetPara" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResetPassword">
+      <soap:operation soapAction="http://tempuri.org/ResetPassword" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCargo">
+      <soap:operation soapAction="http://tempuri.org/GetCargo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCargoTotal">
+      <soap:operation soapAction="http://tempuri.org/GetCargoTotal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebServiceFlightDynSoap12" type="tns:WebServiceFlightDynSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetFlightDyn">
+      <soap12:operation soapAction="http://tempuri.org/GetFlightDyn" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryFlightDyn">
+      <soap12:operation soapAction="http://tempuri.org/QueryFlightDyn" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightViewDyn">
+      <soap12:operation soapAction="http://tempuri.org/GetFlightViewDyn" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightSecurityData">
+      <soap12:operation soapAction="http://tempuri.org/GetFlightSecurityData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSecurityDataTime">
+      <soap12:operation soapAction="http://tempuri.org/UpdateSecurityDataTime" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSecurityData">
+      <soap12:operation soapAction="http://tempuri.org/UpdateSecurityData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SignChecked">
+      <soap12:operation soapAction="http://tempuri.org/SignChecked" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="senderMessageBytopic">
+      <soap12:operation soapAction="http://tempuri.org/senderMessageBytopic" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUser">
+      <soap12:operation soapAction="http://tempuri.org/GetUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPara">
+      <soap12:operation soapAction="http://tempuri.org/GetPara" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResetPassword">
+      <soap12:operation soapAction="http://tempuri.org/ResetPassword" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCargo">
+      <soap12:operation soapAction="http://tempuri.org/GetCargo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCargoTotal">
+      <soap12:operation soapAction="http://tempuri.org/GetCargoTotal" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebServiceFlightDynHttpGet" type="tns:WebServiceFlightDynHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="GetFlightDyn">
+      <http:operation location="/GetFlightDyn" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="QueryFlightDyn">
+      <http:operation location="/QueryFlightDyn" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightViewDyn">
+      <http:operation location="/GetFlightViewDyn" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightSecurityData">
+      <http:operation location="/GetFlightSecurityData" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSecurityDataTime">
+      <http:operation location="/UpdateSecurityDataTime" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSecurityData">
+      <http:operation location="/UpdateSecurityData" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="SignChecked">
+      <http:operation location="/SignChecked" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="senderMessageBytopic">
+      <http:operation location="/senderMessageBytopic" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="GetUser">
+      <http:operation location="/GetUser" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="GetPara">
+      <http:operation location="/GetPara" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="ResetPassword">
+      <http:operation location="/ResetPassword" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="GetCargo">
+      <http:operation location="/GetCargo" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="GetCargoTotal">
+      <http:operation location="/GetCargoTotal" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebServiceFlightDynHttpPost" type="tns:WebServiceFlightDynHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="GetFlightDyn">
+      <http:operation location="/GetFlightDyn" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="QueryFlightDyn">
+      <http:operation location="/QueryFlightDyn" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightViewDyn">
+      <http:operation location="/GetFlightViewDyn" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightSecurityData">
+      <http:operation location="/GetFlightSecurityData" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSecurityDataTime">
+      <http:operation location="/UpdateSecurityDataTime" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSecurityData">
+      <http:operation location="/UpdateSecurityData" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="SignChecked">
+      <http:operation location="/SignChecked" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="senderMessageBytopic">
+      <http:operation location="/senderMessageBytopic" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="GetUser">
+      <http:operation location="/GetUser" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="GetPara">
+      <http:operation location="/GetPara" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="ResetPassword">
+      <http:operation location="/ResetPassword" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="GetCargo">
+      <http:operation location="/GetCargo" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="GetCargoTotal">
+      <http:operation location="/GetCargoTotal" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WebServiceFlightDyn">
+    <wsdl:port name="WebServiceFlightDynSoap" binding="tns:WebServiceFlightDynSoap">
+      <soap:address location="http://218.93.121.46/WebServiceFlightDyn.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebServiceFlightDynSoap12" binding="tns:WebServiceFlightDynSoap12">
+      <soap12:address location="http://218.93.121.46/WebServiceFlightDyn.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebServiceFlightDynHttpGet" binding="tns:WebServiceFlightDynHttpGet">
+      <http:address location="http://218.93.121.46/WebServiceFlightDyn.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebServiceFlightDynHttpPost" binding="tns:WebServiceFlightDynHttpPost">
+      <http:address location="http://218.93.121.46/WebServiceFlightDyn.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
