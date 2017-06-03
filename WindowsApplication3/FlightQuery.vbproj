@@ -165,7 +165,6 @@
       <LastGenOutput>Reference.vb</LastGenOutput>
     </None>
     <None Include="Web References\WebReference\WebServiceFlightDyn.wsdl" />
-    <None Include="WindowsApplication3_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Web References\WebReference\WebServiceFlightDyn.disco" />

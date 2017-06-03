@@ -11,6 +11,8 @@ Public Class Form1
     ''' <remarks></remarks>
     Private Sub frmPersonalRecord_Load(sender As Object, e As EventArgs) Handles Me.Load
         Try
+
+
             System.Windows.Forms.Cursor.Current = Cursors.WaitCursor
             Panel1.Visible = False
             InitFace()
